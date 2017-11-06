@@ -24,6 +24,8 @@ class Footerrr extends React.Component{
 
 }
 
+// homework: tao 3 file voi 3 component , export, su dung tuy bien
+
 
 ReactDOM.render(
     <div> 
