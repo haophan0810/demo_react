@@ -1,41 +1,55 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import "./style.css"
+// import component ve de render
 
-import Headerrr from './head'
-
-
-
-// first component
-
-class Bodyyy extends React.Component{
-    render(){
-        return (
-            <h1 id="h1">i am Bodyyy </h1>
-        )
+class Hello extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            number: 0,
+            inputValue1: 0,
+            inputValue2: 0,
+            name : "David"
+        }
+    }
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name] : parseInt(event.target.value)
+        })
     }
 
-}
-class Footerrr extends React.Component{
-    render(){
-        return (
-            <h1 className="test">i am Footerrr </h1>
-        )
+    handleClick = () => {
+        this.setState({
+            number: this.state.inputValue1 + this.state.inputValue2 
+        })
     }
-
-}
-
-// homework: tao 3 file voi 3 component , export, su dung tuy bien
-
-
-ReactDOM.render(
-    <div> 
-        <Headerrr name="Ronanldo" weight="50kg" age={40} color="red"/>
-        <Headerrr name="David" weight="70KG" age={60} color="blue"/>
-        
-    </div>
     
-   ,
+    render(){
+        return (
+            <div>
+                <input 
+                name="inputValue1" 
+                onChange={this.handleChange} 
+                value={this.state.inputValue1} />
+                <input 
+                name="inputValue2"
+                onChange={this.handleChange} 
+                value={this.state.inputValue2} />
+                <button onClick={this.handleClick}>click to add!</button>
+                <h2>Sum: {this.state.number}</h2>
+            </div>
+        )
+    }
+}
 
+
+
+// render noi dung ra trinh duyet
+ReactDOM.render(
+    <Hello />
+    ,
     document.getElementById('root')
-
 )
+
+// Homework: tao 3 file voi 3 components, export, su dung va tuy bien
